@@ -12,7 +12,27 @@
 		79D45E0419DEC1920046095F /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D45E0319DEC1920046095F /* Radical.swift */; };
 		79D45E0519DEC1C60046095F /* Radical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7928298B19DEBAFF00030222 /* Radical.framework */; };
 		79D45E3719DEC38A0046095F /* Radical.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7928298B19DEBAFF00030222 /* Radical.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		79D45E3F19DED12E0046095F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D45E3E19DED12E0046095F /* Request.swift */; };
+		79D45E5519DED3FC0046095F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D45E5119DED3D70046095F /* Alamofire.framework */; };
+		79D45E5719DED4070046095F /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 79D45E5119DED3D70046095F /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		79D45E5019DED3D70046095F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79D45E4B19DED3D70046095F /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
+		79D45E5219DED3D70046095F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79D45E4B19DED3D70046095F /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		79D45E3619DEC37C0046095F /* Copy Frameworks */ = {
@@ -22,6 +42,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				79D45E3719DEC38A0046095F /* Radical.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79D45E5619DED4010046095F /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				79D45E5719DED4070046095F /* Alamofire.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,6 +67,8 @@
 		7928299919DEBAFF00030222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7928299A19DEBAFF00030222 /* RadicalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadicalTests.swift; sourceTree = "<group>"; };
 		79D45E0319DEC1920046095F /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radical.swift; sourceTree = "<group>"; };
+		79D45E3E19DED12E0046095F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		79D45E4B19DED3D70046095F /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Vendor/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79D45E5519DED3FC0046095F /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				79D45E0319DEC1920046095F /* Radical.swift */,
+				79D45E3E19DED12E0046095F /* Request.swift */,
 				7928299019DEBAFF00030222 /* Radical.h */,
+				79D45E4A19DED3C90046095F /* Vendor */,
 				7928298E19DEBAFF00030222 /* Supporting Files */,
 			);
 			path = Source;
@@ -110,6 +146,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		79D45E4A19DED3C90046095F /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				79D45E4B19DED3D70046095F /* Alamofire.xcodeproj */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		79D45E4C19DED3D70046095F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79D45E5119DED3D70046095F /* Alamofire.framework */,
+				79D45E5319DED3D70046095F /* AlamofireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -132,6 +185,7 @@
 				7928298719DEBAFF00030222 /* Frameworks */,
 				7928298819DEBAFF00030222 /* Headers */,
 				7928298919DEBAFF00030222 /* Resources */,
+				79D45E5619DED4010046095F /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,6 +241,12 @@
 			mainGroup = 7928298119DEBAFF00030222;
 			productRefGroup = 7928298C19DEBAFF00030222 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 79D45E4C19DED3D70046095F /* Products */;
+					ProjectRef = 79D45E4B19DED3D70046095F /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				7928298A19DEBAFF00030222 /* Radical */,
@@ -194,6 +254,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		79D45E5119DED3D70046095F /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 79D45E5019DED3D70046095F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		79D45E5319DED3D70046095F /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = 79D45E5219DED3D70046095F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7928298919DEBAFF00030222 /* Resources */ = {
@@ -218,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79D45E0419DEC1920046095F /* Radical.swift in Sources */,
+				79D45E3F19DED12E0046095F /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

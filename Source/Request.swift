@@ -1,4 +1,4 @@
-// Radical.h
+// Request.swift
 //
 // Copyright (c) 2014 Shintaro Kaneko (http://kaneshinth.com)
 //
@@ -20,7 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import Foundation
 
-FOUNDATION_EXPORT double RadicalVersionNumber;
-FOUNDATION_EXPORT const unsigned char RadicalVersionString[];
+public class Request: NSObject {
+    
+    class Manager {
+        
+        class var sharedInstance: Manager {
+            struct Singleton {
+                static let instance = Manager()
+            }
+            return Singleton.instance
+        }
+        
+    }
+
+    public func request(Method) -> Request {
+        return Request()
+    }
+
+}
