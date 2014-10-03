@@ -1,0 +1,20 @@
+# Radical
+
+
+## Requirements
+
+- iOS 7.0+
+- Xcode 6.1+
+
+
+---
+
+## Author
+
+- [Shintaro Kaneko](https://github.com/kaneshin) <kaneshin0120@gmail.com>
+
+
+## License
+
+The MIT License
+
