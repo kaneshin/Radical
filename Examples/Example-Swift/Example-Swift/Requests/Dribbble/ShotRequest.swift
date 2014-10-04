@@ -25,9 +25,9 @@ import Foundation
 class ShotRequest: DribbbleRequest {
     
     enum List: String {
-        case Debuts     = "debuts"
-        case Everyone   = "everyone"
-        case Popular    = "popular"
+        case Debuts = "debuts"
+        case Everyone = "everyone"
+        case Popular = "popular"
     }
     
     class func dispatch(component: Component, handlers: Handlers) -> ShotRequest {

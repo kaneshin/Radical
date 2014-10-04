@@ -26,8 +26,8 @@ import Radical
 class DribbbleRequest: Request {
     
     struct Pagination {
-        var page: UInt      = 1
-        var perPage: UInt   = 15
+        var page: UInt = 1
+        var perPage: UInt = 15
         func toDictionary() -> [String : AnyObject] {
             return [
                 DribbbleRequest.Key.Pagination.Page.rawValue: self.page,
@@ -38,8 +38,8 @@ class DribbbleRequest: Request {
     
     enum Key {
         enum Pagination: String {
-            case Page       = "page"
-            case PerPage    = "per_page"
+            case Page = "page"
+            case PerPage = "per_page"
         }
         enum Shot: String {
             case Id = "id"
