@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7922FA0B19E004C50085F3C0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D45E5119DED3D70046095F /* Alamofire.framework */; };
 		7928299119DEBAFF00030222 /* Radical.h in Headers */ = {isa = PBXBuildFile; fileRef = 7928299019DEBAFF00030222 /* Radical.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7928299B19DEBAFF00030222 /* RadicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7928299A19DEBAFF00030222 /* RadicalTests.swift */; };
 		79D45E0419DEC1920046095F /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D45E0319DEC1920046095F /* Radical.swift */; };
@@ -33,20 +34,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
 			remoteInfo = AlamofireTests;
-		};
-		79D45E5F19DF9B760046095F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7928298219DEBAFF00030222 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7928298A19DEBAFF00030222;
-			remoteInfo = Radical;
-		};
-		79D45E6119DF9BD90046095F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 79D45E4B19DED3D70046095F /* Alamofire.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
-			remoteInfo = Alamofire;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -102,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7922FA0B19E004C50085F3C0 /* Alamofire.framework in Frameworks */,
 				79D45E0519DEC1C60046095F /* Radical.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,7 +206,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				79D45E6219DF9BD90046095F /* PBXTargetDependency */,
 			);
 			name = Radical;
 			productName = Radical;
@@ -237,7 +224,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				79D45E6019DF9B760046095F /* PBXTargetDependency */,
 			);
 			name = RadicalTests;
 			productName = RadicalTests;
@@ -340,19 +326,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		79D45E6019DF9B760046095F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7928298A19DEBAFF00030222 /* Radical */;
-			targetProxy = 79D45E5F19DF9B760046095F /* PBXContainerItemProxy */;
-		};
-		79D45E6219DF9BD90046095F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			targetProxy = 79D45E6119DF9BD90046095F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7928299C19DEBAFF00030222 /* Debug */ = {

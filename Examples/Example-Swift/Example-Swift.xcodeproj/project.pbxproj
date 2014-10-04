@@ -10,6 +10,7 @@
 		7915851819DFFFFD0025C997 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7915851719DFFFFD0025C997 /* Request.swift */; };
 		7915851D19E001310025C997 /* DribbbleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7915851B19E001310025C997 /* DribbbleRequest.swift */; };
 		7915851E19E001310025C997 /* ShotRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7915851C19E001310025C997 /* ShotRequest.swift */; };
+		7922FA0619E0046D0085F3C0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7922FA0519E0046D0085F3C0 /* Alamofire.framework */; };
 		792829B319DEC0E100030222 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792829B219DEC0E100030222 /* AppDelegate.swift */; };
 		792829B619DEC0E100030222 /* Example_Swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 792829B419DEC0E100030222 /* Example_Swift.xcdatamodeld */; };
 		792829B819DEC0E100030222 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792829B719DEC0E100030222 /* ViewController.swift */; };
@@ -35,13 +36,6 @@
 			remoteGlobalIDString = 7928299619DEBAFF00030222;
 			remoteInfo = RadicalTests;
 		};
-		79D45E3319DEC32E0046095F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 79D45E1A19DEC3110046095F /* Radical.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7928298A19DEBAFF00030222;
-			remoteInfo = Radical;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +56,7 @@
 		7915851719DFFFFD0025C997 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		7915851B19E001310025C997 /* DribbbleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DribbbleRequest.swift; sourceTree = "<group>"; };
 		7915851C19E001310025C997 /* ShotRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotRequest.swift; sourceTree = "<group>"; };
+		7922FA0519E0046D0085F3C0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Vendor/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		792829AD19DEC0E100030222 /* Example-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		792829B119DEC0E100030222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		792829B219DEC0E100030222 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7922FA0619E0046D0085F3C0 /* Alamofire.framework in Frameworks */,
 				79D45E3119DEC32E0046095F /* Radical.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +150,7 @@
 		79D45E0619DEC2650046095F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7922FA0519E0046D0085F3C0 /* Alamofire.framework */,
 				79D45E1A19DEC3110046095F /* Radical.xcodeproj */,
 			);
 			name = Frameworks;
@@ -183,7 +180,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				79D45E3419DEC32E0046095F /* PBXTargetDependency */,
 			);
 			name = "Example-Swift";
 			productName = "Example-Swift";
@@ -273,14 +269,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		79D45E3419DEC32E0046095F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Radical;
-			targetProxy = 79D45E3319DEC32E0046095F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		792829B919DEC0E100030222 /* Main.storyboard */ = {
@@ -384,6 +372,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/kaneshin/Develop/project/kaneshinth.com/Radical/Vendor/Alamofire/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "Example-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -395,6 +387,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/kaneshin/Develop/project/kaneshinth.com/Radical/Vendor/Alamofire/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "Example-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
