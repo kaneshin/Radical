@@ -24,5 +24,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let pagination = DribbbleRequest.Pagination()
+        ShotRequest.list(.Debuts, pagination: pagination, handlers: Request.Handlers(
+            success: { (response, objects) -> Void in
+                println(objects)
+            }, failure: { (response, error) -> Void in
+                println(error)
+            }, completion: { () -> Void in
+        }))
+    }
 }
 

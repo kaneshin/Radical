@@ -34,22 +34,10 @@ class ShotRequest: DribbbleRequest {
         return ShotRequest().dispatch(component, handlers: handlers) as ShotRequest
     }
     
-    /**
-     * Returns the specified list of shots where :list has one of
-     * the following values: debuts, everyone, popular
-     * Parameters: Supports pagination
-*/
-    /**
-    * GET /shots/:list
-    *
-    * @param list
-    * @param pagination
-    * @param handlers
-    */
     class func list(list: List, pagination: Pagination, handlers: Handlers) -> ShotRequest {
         var component = Component(method: .GET, path: "/shots/\(list.rawValue)")
         component.parameters = pagination.toDictionary()
-        return dispatch(component, handlers: handlers);
+        return ShotRequest.dispatch(component, handlers: handlers)
     }
     
 }

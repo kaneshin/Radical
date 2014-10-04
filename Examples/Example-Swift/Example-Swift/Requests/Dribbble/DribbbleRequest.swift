@@ -50,8 +50,4 @@ class DribbbleRequest: Request {
         super.init(url: NSURL(string: "http://api.dribbble.com/")!)
     }
     
-    func dispatch(component: Component, handlers: Handlers) -> AnyObject {
-        return super.dispatch(component).responseJSON(handlers)
-    }
-
 }
