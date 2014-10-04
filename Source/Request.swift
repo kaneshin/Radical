@@ -26,10 +26,10 @@ import Alamofire
 public class Request: NSObject {
 
     public struct Component {
-        var method: Method
-        var path: String
-        var parameters: [String : AnyObject]?
-        var data: NSData?
+        public var method: Method
+        public var path: String
+        public var parameters: [String : AnyObject]?
+        public var data: NSData?
         public init(method: Method, path: String) {
             self.method = method
             self.path = path
@@ -75,13 +75,13 @@ public class Request: NSObject {
     
     // MARK: - Procedure
     
-    public func dispatch(component: Component) -> Alamofire.Request? {
+    public func dispatch(component: Component) -> Alamofire.Request! {
         let url = NSURL(string: component.path, relativeToURL: self.URL)!
         self.request = Alamofire.request(component.method, url.absoluteString!, parameters: component.parameters)
         return self.request
     }
     
-    public func upload(component: Component) -> Alamofire.Request? {
+    public func upload(component: Component) -> Alamofire.Request! {
         let url = NSURL(string: component.path, relativeToURL: self.URL)!
         self.request = Alamofire.upload(component.method, url.absoluteString!, component.data!)
         return self.request
