@@ -21,22 +21,107 @@
 // THE SOFTWARE.
 
 import Foundation
+import Alamofire
 
 public class Request: NSObject {
+
+    public struct Component {
+        var method: Method
+        var path: String
+        var parameters: [String : AnyObject]?
+        var data: NSData?
+        public init(method: Method, path: String) {
+            self.method = method
+            self.path = path
+        }
+    }
+    
+    public typealias Success = ((NSHTTPURLResponse?, AnyObject?) -> Void)
+    public typealias Failure = ((NSHTTPURLResponse?, NSError?) -> Void)
+    public typealias Completion = (() -> Void)
+
+    public struct Handlers {
+        var success: Success?
+        var failure: Failure?
+        var completion: Completion?
+        public init(success: Success? = nil, failure: Failure? = nil, completion: Completion? = nil) {
+            self.success = success
+            self.failure = failure
+            self.completion = completion
+        }
+    }
+
+    // MARK: - Essential
+    
+    private var URL: NSURL!
+    private var request: Alamofire.Request?
+    
+    public init(url: NSURL) {
+        super.init()
+        self.URL = url
+    }
+
+    public func suspend() {
+        self.request?.suspend()
+    }
+
+    public func resume() {
+        self.request?.resume()
+    }
+    
+    public func cancel() {
+        self.request?.cancel()
+    }
+    
+    // MARK: - Procedure
+    
+    public func dispatch(component: Component) -> Alamofire.Request? {
+        let url = NSURL(string: component.path, relativeToURL: self.URL)!
+        self.request = Alamofire.request(component.method, url.absoluteString!, parameters: component.parameters)
+        return self.request
+    }
+    
+    public func upload(component: Component) -> Alamofire.Request? {
+        let url = NSURL(string: component.path, relativeToURL: self.URL)!
+        self.request = Alamofire.upload(component.method, url.absoluteString!, component.data!)
+        return self.request
+    }
+
+    // MARK: - Feature
+    
+    public func forward() {}
+    public func redirect() {}
+
+    // MARK: - Manager (Reserved)
     
     class Manager {
-        
         class var sharedInstance: Manager {
             struct Singleton {
                 static let instance = Manager()
             }
             return Singleton.instance
         }
-        
     }
 
-    public func request(Method) -> Request {
-        return Request()
-    }
+    // MARK: - Extends Alamofire
+    
+    public typealias Method = Alamofire.Method
+    
+}
 
+// MARK: - Extends Alamofire
+
+extension Alamofire.Request {
+    
+    public func responseJSON(handlers: Request.Handlers) -> Self {
+        return self.responseJSON { (request, response, JSON, error) -> Void in
+            if error != nil {
+                handlers.failure?(response, error)
+            } else {
+                handlers.success?(response, JSON)
+            }
+            handlers.completion?()
+        }
+    }
+    
 }
