@@ -26,8 +26,7 @@ class ViewController: UIViewController {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        let pagination = DribbbleRequest.Pagination()
-        ShotRequest.list(.Debuts, pagination: pagination, handlers: Request.Handlers(
+        ShotRequest.list(.Debuts, handlers: Request.Handlers(
             success: { (response, objects) -> Void in
                 println(objects)
             }, failure: { (response, error) -> Void in

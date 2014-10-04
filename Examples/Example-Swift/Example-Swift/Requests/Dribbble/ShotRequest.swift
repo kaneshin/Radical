@@ -34,9 +34,9 @@ class ShotRequest: DribbbleRequest {
         return ShotRequest().dispatch(component, handlers: handlers) as ShotRequest
     }
     
-    class func list(list: List, pagination: Pagination, handlers: Handlers) -> ShotRequest {
+    class func list(list: List, pagination: Pagination? = nil, handlers: Handlers) -> ShotRequest {
         var component = Component(method: .GET, path: "/shots/\(list.rawValue)")
-        component.parameters = pagination.toDictionary()
+        component.parameters = (pagination ?? Pagination()).toDictionary()
         return ShotRequest.dispatch(component, handlers: handlers)
     }
     
