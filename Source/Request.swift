@@ -24,12 +24,26 @@ import Foundation
 import Alamofire
 
 public class Request: NSObject {
+    public struct DataComponent {
+        public var data: NSData?
+        public var url: NSURL?
+        public var stream: NSInputStream?
+        public init(data: NSData?) {
+            self.data = data
+        }
+        public init(url: NSURL?) {
+            self.url = url
+        }
+        public init(stream: NSInputStream?) {
+            self.stream = stream
+        }
+    }
 
     public struct Component {
         public var method: Method
         public var path: String
         public var parameters: [String : AnyObject]?
-        public var data: NSData?
+        public var data: DataComponent?
         public init(method: Method, path: String) {
             self.method = method
             self.path = path
@@ -83,7 +97,15 @@ public class Request: NSObject {
     
     public func upload(component: Component) -> Alamofire.Request! {
         let url = NSURL(string: component.path, relativeToURL: self.URL)!
-        self.request = Alamofire.upload(component.method, url.absoluteString!, component.data!)
+        if let data = component.data?.data {
+            self.request = Alamofire.upload(component.method, url.absoluteString!, data)
+        } else if let url = component.data?.url {
+            self.request = Alamofire.upload(component.method, url.absoluteString!, url)
+        } else if let stream = component.data?.stream {
+            self.request = Alamofire.upload(component.method, url.absoluteString!, stream)
+        } else {
+            // Data is empty.
+        }
         return self.request
     }
 
