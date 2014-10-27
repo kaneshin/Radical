@@ -30,14 +30,15 @@ class ShotRequest: DribbbleRequest {
         case Popular = "popular"
     }
     
-    class func dispatch(component: Component, handlers: Handlers) -> ShotRequest {
-        return ShotRequest().dispatch(component, handlers: handlers) as ShotRequest
-    }
-    
-    class func list(list: List, pagination: Pagination? = nil, handlers: Handlers) -> ShotRequest {
+    class func list(list: List, pagination: Pagination? = nil, handlers: Handlers) {
         var component = Component(method: .GET, path: "/shots/\(list.rawValue)")
         component.parameters = (pagination ?? Pagination()).toDictionary()
-        return ShotRequest.dispatch(component, handlers: handlers)
+        let shotRequest = ShotRequest()
+        shotRequest.component = component
+        shotRequest.handlers = handlers
+        Dispatcher.sharedInstance.dispath(shotRequest, sessionType: .Background)
     }
+    
+   
     
 }

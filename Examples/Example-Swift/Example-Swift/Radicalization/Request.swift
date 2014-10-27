@@ -23,15 +23,6 @@
 import UIKit
 import Radical
 
-class Request: Radical.Request {
-
-    typealias Component = Radical.Request.Component
-    typealias Handlers = Radical.Request.Handlers
-    typealias Method = Radical.Request.Method
-
-    func dispatch(component: Component, handlers: Handlers) -> AnyObject {
-        super.dispatch(component).responseJSON(handlers)
-        return self
-    }
+class Request: RadicalRequest {
 
 }

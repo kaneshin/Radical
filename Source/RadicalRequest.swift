@@ -23,44 +23,64 @@
 import Foundation
 import Alamofire
 
-public class Request: NSObject {
-
+public class RadicalRequest: NSObject {
+    public enum TaskType {
+        case Data
+        case Download
+        case Upload
+    }
+    
+    public enum UploadData {
+        case Data(NSData)
+        case Stream(NSInputStream)
+        case URL(NSURL)
+    }
+    
     public struct Component {
         public var method: Method
         public var path: String
         public var parameters: [String : AnyObject]?
-        public var data: NSData?
+        public var taskType: TaskType
+        public var data: UploadData?
+        public var downloadDestination: NSURL?
         public init(method: Method, path: String) {
             self.method = method
             self.path = path
+            self.taskType = .Data
         }
     }
     
+    public typealias Progress = ((Float) -> Void)
     public typealias Success = ((NSHTTPURLResponse?, AnyObject?) -> Void)
     public typealias Failure = ((NSHTTPURLResponse?, NSError?) -> Void)
     public typealias Completion = (() -> Void)
 
     public struct Handlers {
-        var success: Success?
-        var failure: Failure?
-        var completion: Completion?
-        public init(success: Success? = nil, failure: Failure? = nil, completion: Completion? = nil) {
+        public var progress: Progress?
+        public var success: Success?
+        public var failure: Failure?
+        public var completion: Completion?
+
+        public init(progress: Progress?, success: Success? = nil, failure: Failure? = nil, completion: Completion? = nil) {
+            self.progress = progress
             self.success = success
             self.failure = failure
             self.completion = completion
         }
     }
+    
+    public var component: Component?
+    public var handlers: Handlers?
 
     // MARK: - Essential
     
-    private var URL: NSURL!
+    var URL: NSURL?
     private var request: Alamofire.Request?
     
     public init(url: NSURL) {
-        super.init()
         self.URL = url
     }
-
+    
     public func suspend() {
         self.request?.suspend()
     }
@@ -73,47 +93,14 @@ public class Request: NSObject {
         self.request?.cancel()
     }
     
-    // MARK: - Procedure
-    
-    public func dispatch(component: Component) -> Alamofire.Request! {
-        let url = NSURL(string: component.path, relativeToURL: self.URL)!
-        self.request = Alamofire.request(component.method, url.absoluteString!, parameters: component.parameters)
-        return self.request
-    }
-    
-    public func upload(component: Component) -> Alamofire.Request! {
-        let url = NSURL(string: component.path, relativeToURL: self.URL)!
-        self.request = Alamofire.upload(component.method, url.absoluteString!, component.data!)
-        return self.request
-    }
-
-    // MARK: - Feature
-    
-    public func forward() {}
-    public func redirect() {}
-
-    // MARK: - Manager (Reserved)
-    
-    class Manager {
-        class var sharedInstance: Manager {
-            struct Singleton {
-                static let instance = Manager()
-            }
-            return Singleton.instance
-        }
-    }
-
     // MARK: - Extends Alamofire
-    
     public typealias Method = Alamofire.Method
-    
 }
 
 // MARK: - Extends Alamofire
 
 extension Alamofire.Request {
-    
-    public func responseJSON(handlers: Request.Handlers) -> Self {
+    public func responseJSON(handlers: RadicalRequest.Handlers) -> Self {
         return self.responseJSON { (request, response, JSON, error) -> Void in
             if error != nil {
                 handlers.failure?(response, error)
@@ -123,5 +110,4 @@ extension Alamofire.Request {
             handlers.completion?()
         }
     }
-    
 }
