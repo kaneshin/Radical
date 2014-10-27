@@ -26,16 +26,27 @@ class ViewController: UIViewController {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        ShotRequest.list(.Debuts, handlers:
-        Request.Handlers(progress: { (progress) -> Void in
-            println("progress \(progress)")
+//        ShotRequest.list(.Debuts, handlers:
+//        Request.Handlers(progress: { (progress) -> Void in
+//            println("progress \(progress)")
+//        }, success: { (response, object) -> Void in
+//            println("success")
+//        }, failure: { (response, error) -> Void in
+//            println("failure")
+//        }) { () -> Void in
+//            println("completion")
+//        })
+//        
+        ImageUploadRequest.image2(Request.Handlers(
+            progress: { (progress) -> Void in
+            
         }, success: { (response, object) -> Void in
-            println("success")
+            
         }, failure: { (response, error) -> Void in
-            println("failure")
-        }) { () -> Void in
-            println("completion")
-        })
+            
+        }, completion: { () -> Void in
+            
+        }))
     }
 }
 

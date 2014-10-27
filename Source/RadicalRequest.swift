@@ -110,5 +110,4 @@ extension Alamofire.Request {
             handlers.completion?()
         }
     }
-    
 }

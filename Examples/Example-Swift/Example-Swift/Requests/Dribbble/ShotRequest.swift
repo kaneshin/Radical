@@ -39,4 +39,6 @@ class ShotRequest: DribbbleRequest {
         Dispatcher.sharedInstance.dispath(shotRequest, sessionType: .Background)
     }
     
+   
+    
 }

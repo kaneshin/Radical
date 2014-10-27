@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B62847319FE6DC000BD65C0 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B62847219FE6DC000BD65C0 /* sample.png */; };
+		4B62847719FE6E7200BD65C0 /* ImageUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B62847619FE6E7200BD65C0 /* ImageUploadRequest.swift */; };
 		4B78B6F219FE433B0024443A /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78B6F119FE433B0024443A /* Dispatcher.swift */; };
 		7915851819DFFFFD0025C997 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7915851719DFFFFD0025C997 /* Request.swift */; };
 		7915851D19E001310025C997 /* DribbbleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7915851B19E001310025C997 /* DribbbleRequest.swift */; };
@@ -54,6 +56,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B62847219FE6DC000BD65C0 /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample.png; sourceTree = "<group>"; };
+		4B62847619FE6E7200BD65C0 /* ImageUploadRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadRequest.swift; sourceTree = "<group>"; };
 		4B78B6F119FE433B0024443A /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		7915851719DFFFFD0025C997 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		7915851B19E001310025C997 /* DribbbleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DribbbleRequest.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				7915851A19E001310025C997 /* Dribbble */,
+				4B62847619FE6E7200BD65C0 /* ImageUploadRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				792829B919DEC0E100030222 /* Main.storyboard */,
 				792829BC19DEC0E100030222 /* Images.xcassets */,
 				792829BE19DEC0E100030222 /* LaunchScreen.xib */,
+				4B62847219FE6DC000BD65C0 /* sample.png */,
 				792829B419DEC0E100030222 /* Example_Swift.xcdatamodeld */,
 				792829B019DEC0E100030222 /* Supporting Files */,
 			);
@@ -249,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B62847319FE6DC000BD65C0 /* sample.png in Resources */,
 				792829BB19DEC0E100030222 /* Main.storyboard in Resources */,
 				792829C019DEC0E100030222 /* LaunchScreen.xib in Resources */,
 				792829BD19DEC0E100030222 /* Images.xcassets in Resources */,
@@ -266,6 +273,7 @@
 				792829B819DEC0E100030222 /* ViewController.swift in Sources */,
 				792829B619DEC0E100030222 /* Example_Swift.xcdatamodeld in Sources */,
 				7915851E19E001310025C997 /* ShotRequest.swift in Sources */,
+				4B62847719FE6E7200BD65C0 /* ImageUploadRequest.swift in Sources */,
 				4B78B6F219FE433B0024443A /* Dispatcher.swift in Sources */,
 				792829B319DEC0E100030222 /* AppDelegate.swift in Sources */,
 				7915851D19E001310025C997 /* DribbbleRequest.swift in Sources */,

@@ -73,23 +73,31 @@ public class RadicalDispatcher: NSObject {
                         let parameterEncoding = ParameterEncoding.URL
                         let nsurlRequest = NSMutableURLRequest(URL: url)
                         nsurlRequest.HTTPMethod = component.method.rawValue
-                        let urlRequest = parameterEncoding.encode(nsurlRequest, parameters: parameters).0
                         if let data = component.data {
                             switch data {
                             case .Data(let data):
-                                request = sessionManager?.upload(urlRequest, data: data)
+                                let urlRequest = parameterEncoding.encode(nsurlRequest, parameters: parameters).0
+                                let dataUrl = RadicalDispatcher.multipartFormData(nsurlRequest, data: data, fileName: "image", parameterName: "image")
+                                request = sessionManager?.upload(urlRequest, file: dataUrl)
                             case .Stream(let stream):
+                                let urlRequest = parameterEncoding.encode(nsurlRequest, parameters: parameters).0
                                 request = sessionManager?.upload(urlRequest, stream: stream)
                             case .URL(let url):
+                                let urlRequest = parameterEncoding.encode(nsurlRequest, parameters: parameters).0
                                 request = sessionManager?.upload(urlRequest, file: url)
                             }
                         }
                         request?.progress(closure: { (bytesSend, totalBytesSend, totalBytesExpectedToWrite) -> Void in
-                            radicalRequest.handlers?.progress?(Float(totalBytesSend) / Float(totalBytesExpectedToWrite))
+                            let progress = Float(totalBytesSend) / Float(totalBytesExpectedToWrite)
+                            println("Progress : \(progress)")
+                            radicalRequest.handlers?.progress?(progress)
                             return
                         })
-                        request?.responseJSON({ (urlRequest: NSURLRequest, response: NSHTTPURLResponse?, object: AnyObject?, error: NSError?) -> Void in
-                            self.centralProcessResponse(urlRequest, response: response, object: object, error: error, radicalRequest: radicalRequest)
+//                        request?.responseJSON({ (urlRequest: NSURLRequest, response: NSHTTPURLResponse?, object: AnyObject?, error: NSError?) -> Void in
+//                            self.centralProcessResponse(urlRequest, response: response, object: object, error: error, radicalRequest: radicalRequest)
+//                        })
+                        request?.response({ (request, response, object, error) -> Void in
+                            self.centralProcessResponse(request, response: response, object: object, error: error, radicalRequest: radicalRequest)
                         })
                     case .Download:
                         let parameterEncoding = ParameterEncoding.URL
@@ -111,5 +119,49 @@ public class RadicalDispatcher: NSObject {
                 }
             }
         }
+    }
+    
+    class func multipartFormData(request: NSMutableURLRequest,data: NSData,fileName: String,parameterName: String) -> NSURL {
+
+        /*
+        // boundary に任意の文字列を設定します．
+        let boundary = "-boundary"
+        let post = "muukii"
+        
+        let fileNameUploaded = "image"
+        let nameUploaded = "image"
+        
+        // POST multipart/form-data のボディ部分を作成します．
+        let dataSend = NSMutableData()
+        dataSend.appendData(NSString(string: "--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        dataSend.appendData(NSString(string: "Content-Disposition: form-data; name=\"status\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        dataSend.appendData(NSString(string: "\(post)").dataUsingEncoding(NSUTF8StringEncoding)!)
+        dataSend.appendData(NSString(string: "\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        dataSend.appendData(NSString(string: "--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        dataSend.appendData(NSString(string: "Content-Disposition: form-data; name=\"\(nameUploaded)\"; filename=\"\(fileNameUploaded)\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        dataSend.appendData(NSString(string: "Content-Type: image/png\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        dataSend.appendData(data)
+        dataSend.appendData(NSString(string: "\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        dataSend.appendData(NSString(string: "--\(boundary)--\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        // POST リクエストを作成します．
+//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//        [request setHTTPMethod:@"POST"];
+//        [request setHTTPBody:dataSend];
+        request.HTTPBody = dataSend
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+*/
+        let fileName = ""
+        let signatureFile = NSTemporaryDirectory() + "/" + fileName
+        data.writeToFile(signatureFile, atomically: true)
+        
+//        while (![[NSFileManager defaultManager] fileExistsAtPath:signatureFile]) {
+//            [NSThread sleepForTimeInterval:.5];
+//        }
+        
+        request.HTTPMethod = "POST"
+        request.addValue("image/png", forHTTPHeaderField: "Content-Type")
+    
+        return NSURL(fileURLWithPath: signatureFile)!
     }
 }
