@@ -23,6 +23,10 @@ public class RadicalDispatcher: NSObject {
         }
         return Singleton.instance
     }
+    
+    public var defaultSessionManager: Manager?
+    public var backgroundSessionManager: Manager?
+    
     public override init() {
         super.init()
         self.defaultSessionManager = Manager.sharedInstance
@@ -36,11 +40,15 @@ public class RadicalDispatcher: NSObject {
     }
     
     public func centralProcessResponse(request: NSURLRequest, response: NSHTTPURLResponse?, object: AnyObject?, error: NSError?, radicalRequest: RadicalRequest) {
-        
+        if let handlers = radicalRequest.handlers {
+            if error != nil {
+                handlers.failure?(response, error)
+            } else {
+                handlers.success?(response, object)
+            }
+            handlers.completion?()
+        }
     }
-    
-    public var defaultSessionManager: Manager?
-    public var backgroundSessionManager: Manager?
     
     public func dispath(radicalRequest: RadicalRequest,sessionType: SessionType) {
         if let component = radicalRequest.component {
@@ -58,8 +66,8 @@ public class RadicalDispatcher: NSObject {
                     switch component.taskType {
                     case .Data:
                         request = sessionManager?.request(component.method, url, parameters: parameters, encoding: ParameterEncoding.URL)
-                        request?.responseJSON({ (request: NSURLRequest, response: NSHTTPURLResponse?, object: AnyObject?, error: NSError?) -> Void in
-                            self.centralProcessResponse(request, response: response, object: object, error: error, radicalRequest: radicalRequest)
+                        request?.responseJSON({ (urlRequest: NSURLRequest, response: NSHTTPURLResponse?, object: AnyObject?, error: NSError?) -> Void in
+                            self.centralProcessResponse(urlRequest, response: response, object: object, error: error, radicalRequest: radicalRequest)
                         })
                     case .Upload:
                         let parameterEncoding = ParameterEncoding.URL
@@ -76,8 +84,12 @@ public class RadicalDispatcher: NSObject {
                                 request = sessionManager?.upload(urlRequest, file: url)
                             }
                         }
-                        request?.responseJSON({ (url: NSURLRequest?, response: NSHTTPURLResponse?, object: AnyObject?, error: NSError?) -> Void in
-                            
+                        request?.progress(closure: { (bytesSend, totalBytesSend, totalBytesExpectedToWrite) -> Void in
+                            radicalRequest.handlers?.progress?(Float(totalBytesSend) / Float(totalBytesExpectedToWrite))
+                            return
+                        })
+                        request?.responseJSON({ (urlRequest: NSURLRequest, response: NSHTTPURLResponse?, object: AnyObject?, error: NSError?) -> Void in
+                            self.centralProcessResponse(urlRequest, response: response, object: object, error: error, radicalRequest: radicalRequest)
                         })
                     case .Download:
                         let parameterEncoding = ParameterEncoding.URL
@@ -87,10 +99,14 @@ public class RadicalDispatcher: NSObject {
                         request = sessionManager?.download(urlRequest, destination: { (url: NSURL, urlResponse: NSHTTPURLResponse) -> (NSURL) in
                             return component.downloadDestination ?? NSURL()
                         })
+                        request?.progress(closure: { (bytesRead, totalBytesRead, totalBytesExpectedToWrite) -> Void in
+                            radicalRequest.handlers?.progress?(Float(totalBytesRead) / Float(totalBytesExpectedToWrite))
+                            return
+                        })
+                        request?.responseJSON({ (urlRequest: NSURLRequest, response: NSHTTPURLResponse?, object: AnyObject?, error: NSError?) -> Void in
+                            self.centralProcessResponse(urlRequest, response: response, object: object, error: error, radicalRequest: radicalRequest)
+                        })
                     }
-                    request?.progress(closure: { (bytesRead, totalBytesRead, totalBytesExpectedToWrite) -> Void in
-                        println("\(bytesRead),\(totalBytesRead),\(totalBytesExpectedToWrite)")
-                    })
                     request?.resume()
                 }
             }

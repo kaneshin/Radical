@@ -35,7 +35,8 @@ class ShotRequest: DribbbleRequest {
         component.parameters = (pagination ?? Pagination()).toDictionary()
         let shotRequest = ShotRequest()
         shotRequest.component = component
-        Dispatcher.sharedInstance.dispath(shotRequest, sessionType: .Default)
+        shotRequest.handlers = handlers
+        Dispatcher.sharedInstance.dispath(shotRequest, sessionType: .Background)
     }
     
 }

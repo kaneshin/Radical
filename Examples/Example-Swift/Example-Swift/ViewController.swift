@@ -28,13 +28,13 @@ class ViewController: UIViewController {
         super.awakeFromNib()
         ShotRequest.list(.Debuts, handlers:
         Request.Handlers(progress: { (progress) -> Void in
-            
+            println("progress \(progress)")
         }, success: { (response, object) -> Void in
-            
+            println("success")
         }, failure: { (response, error) -> Void in
-            
+            println("failure")
         }) { () -> Void in
-            
+            println("completion")
         })
     }
 }
