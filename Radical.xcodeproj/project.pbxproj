@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B78B6EE19FE27600024443A /* RadicalDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78B6ED19FE27600024443A /* RadicalDispatcher.swift */; };
 		7922FA0B19E004C50085F3C0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D45E5119DED3D70046095F /* Alamofire.framework */; };
 		7928299119DEBAFF00030222 /* Radical.h in Headers */ = {isa = PBXBuildFile; fileRef = 7928299019DEBAFF00030222 /* Radical.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7928299B19DEBAFF00030222 /* RadicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7928299A19DEBAFF00030222 /* RadicalTests.swift */; };
 		79D45E0419DEC1920046095F /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D45E0319DEC1920046095F /* Radical.swift */; };
 		79D45E0519DEC1C60046095F /* Radical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7928298B19DEBAFF00030222 /* Radical.framework */; };
 		79D45E3719DEC38A0046095F /* Radical.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7928298B19DEBAFF00030222 /* Radical.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		79D45E3F19DED12E0046095F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D45E3E19DED12E0046095F /* Request.swift */; };
+		79D45E3F19DED12E0046095F /* RadicalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D45E3E19DED12E0046095F /* RadicalRequest.swift */; };
 		79D45E5519DED3FC0046095F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D45E5119DED3D70046095F /* Alamofire.framework */; };
 		79D45E5719DED4070046095F /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 79D45E5119DED3D70046095F /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		79D45E5A19DF8E480046095F /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D45E5819DF8E430046095F /* RequestTests.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B78B6ED19FE27600024443A /* RadicalDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadicalDispatcher.swift; sourceTree = "<group>"; };
 		7928298B19DEBAFF00030222 /* Radical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Radical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7928298F19DEBAFF00030222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7928299019DEBAFF00030222 /* Radical.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Radical.h; sourceTree = "<group>"; };
@@ -70,7 +72,7 @@
 		7928299919DEBAFF00030222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7928299A19DEBAFF00030222 /* RadicalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadicalTests.swift; sourceTree = "<group>"; };
 		79D45E0319DEC1920046095F /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radical.swift; sourceTree = "<group>"; };
-		79D45E3E19DED12E0046095F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		79D45E3E19DED12E0046095F /* RadicalRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadicalRequest.swift; sourceTree = "<group>"; };
 		79D45E4B19DED3D70046095F /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Vendor/Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		79D45E5819DF8E430046095F /* RequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		79D45E5D19DF947B0046095F /* RequestFixture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFixture.swift; sourceTree = "<group>"; };
@@ -119,7 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				79D45E0319DEC1920046095F /* Radical.swift */,
-				79D45E3E19DED12E0046095F /* Request.swift */,
+				4B78B6ED19FE27600024443A /* RadicalDispatcher.swift */,
+				79D45E3E19DED12E0046095F /* RadicalRequest.swift */,
 				7928299019DEBAFF00030222 /* Radical.h */,
 				79D45E4A19DED3C90046095F /* Vendor */,
 				7928298E19DEBAFF00030222 /* Supporting Files */,
@@ -311,7 +314,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				79D45E0419DEC1920046095F /* Radical.swift in Sources */,
-				79D45E3F19DED12E0046095F /* Request.swift in Sources */,
+				4B78B6EE19FE27600024443A /* RadicalDispatcher.swift in Sources */,
+				79D45E3F19DED12E0046095F /* RadicalRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
