@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B78B6F219FE433B0024443A /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78B6F119FE433B0024443A /* Dispatcher.swift */; };
 		7915851819DFFFFD0025C997 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7915851719DFFFFD0025C997 /* Request.swift */; };
 		7915851D19E001310025C997 /* DribbbleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7915851B19E001310025C997 /* DribbbleRequest.swift */; };
 		7915851E19E001310025C997 /* ShotRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7915851C19E001310025C997 /* ShotRequest.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B78B6F119FE433B0024443A /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		7915851719DFFFFD0025C997 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		7915851B19E001310025C997 /* DribbbleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DribbbleRequest.swift; sourceTree = "<group>"; };
 		7915851C19E001310025C997 /* ShotRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotRequest.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				7915851719DFFFFD0025C997 /* Request.swift */,
+				4B78B6F119FE433B0024443A /* Dispatcher.swift */,
 			);
 			path = Radicalization;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				792829B819DEC0E100030222 /* ViewController.swift in Sources */,
 				792829B619DEC0E100030222 /* Example_Swift.xcdatamodeld in Sources */,
 				7915851E19E001310025C997 /* ShotRequest.swift in Sources */,
+				4B78B6F219FE433B0024443A /* Dispatcher.swift in Sources */,
 				792829B319DEC0E100030222 /* AppDelegate.swift in Sources */,
 				7915851D19E001310025C997 /* DribbbleRequest.swift in Sources */,
 			);

@@ -61,8 +61,8 @@ public class RadicalRequest: NSObject {
         public var failure: Failure?
         public var completion: Completion?
 
-        public init(success: Success? = nil, failure: Failure? = nil, completion: Completion? = nil) {
-            self.progress
+        public init(progress: Progress?, success: Success? = nil, failure: Failure? = nil, completion: Completion? = nil) {
+            self.progress = progress
             self.success = success
             self.failure = failure
             self.completion = completion
@@ -74,14 +74,13 @@ public class RadicalRequest: NSObject {
 
     // MARK: - Essential
     
-    private var URL: NSURL!
+    var URL: NSURL?
     private var request: Alamofire.Request?
     
     public init(url: NSURL) {
-        super.init()
         self.URL = url
     }
-
+    
     public func suspend() {
         self.request?.suspend()
     }

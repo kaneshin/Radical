@@ -26,13 +26,16 @@ class ViewController: UIViewController {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        ShotRequest.list(.Debuts, handlers: Request.Handlers(
-            success: { (response, objects) -> Void in
-                println(objects)
-            }, failure: { (response, error) -> Void in
-                println(error)
-            }, completion: { () -> Void in
-        }))
+        ShotRequest.list(.Debuts, handlers:
+        Request.Handlers(progress: { (progress) -> Void in
+            
+        }, success: { (response, object) -> Void in
+            
+        }, failure: { (response, error) -> Void in
+            
+        }) { () -> Void in
+            
+        })
     }
 }
 
